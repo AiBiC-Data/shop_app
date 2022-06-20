@@ -9,10 +9,10 @@ class OrderItem {
   final DateTime dateTime;
 
   OrderItem({
-    required this.id,
-    required this.amount,
-    required this.products,
-    required this.dateTime,
+    @required this.id,
+    @required this.amount,
+    @required this.products,
+    @required this.dateTime,
   });
 }
 
@@ -20,7 +20,7 @@ class Orders with ChangeNotifier {
   List<OrderItem> _orders = [];
 
   List<OrderItem> get orders {
-    return [...orders];
+    return [..._orders];
   }
 
   void addOrder(List<CartItem> cartProducts, double total) {
@@ -29,8 +29,8 @@ class Orders with ChangeNotifier {
       OrderItem(
         id: DateTime.now().toString(),
         amount: total,
-        products: cartProducts,
         dateTime: DateTime.now(),
+        products: cartProducts,
       ),
     );
     notifyListeners();
